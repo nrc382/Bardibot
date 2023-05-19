@@ -1,0 +1,6 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>30</x><y>50</y><w>630</w><h>60</h></coordinates><panel_attributes>Bardi
+
++ bot.js </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>30</x><y>130</y><w>120</w><h>40</h></coordinates><panel_attributes>Controller
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>290</x><y>130</y><w>120</w><h>40</h></coordinates><panel_attributes>Model
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>540</x><y>130</y><w>120</w><h>40</h></coordinates><panel_attributes>Views
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element></diagram>

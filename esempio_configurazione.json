@@ -1,0 +1,26 @@
+{
+    "telegram": {
+        "token": "",
+        "allowed_updates": ["message", "inline_query", "callback_query"]
+    },
+    "server": {
+        "url": "",
+        "router": "",
+        "port": -1,
+        "max_connections": 5
+    },
+    "bot": {
+        "nome_bot": "Bardi_tbot",
+        "admin_id": -1,
+        "admin_nick": ""
+    },
+    "directory": {
+        "Utenti": ""
+
+    },
+    "sviluppo":{
+        "logs_abilitati": true
+    }
+
+
+}
