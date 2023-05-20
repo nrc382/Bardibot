@@ -1,10 +1,12 @@
-// Alto livello di gestione per User
+// Alto livello di gestione per messaggi testuali ricevuti
+
 const utenti = require("./Specifiche/utenti");
-const model = require("../Models/user_model")
+const model = require("../Models/user_model");
+const utilità = require("../../Utils/utilità");
 
 
 module.exports.gestisci = async (messaggio) => {
-    if (messaggio.text === "/dimenticami") {
+    if (messaggio.text === utilità.configurazione.comandi.dimentica) {
         await utenti.dimentica_utente(messaggio);
     } else {
         if (!model.è_registrato(messaggio.from.id)){

@@ -35,8 +35,10 @@ module.exports.nuovo_utente = () => {
         //`(in qualsiasi momento con il comando /dimenticami potrai cancellare ogni tuo dato)`
     ); 
     tastiera.push([
-        //{ text: "\"id\"?", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.mostra_id.stmp}` },
-        { text: "Registrati", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registra.stmp}:${albero_query.utente.registra.info.stmp}` }  
+        // { text: "id?", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.mostra_id.stmp}:s` },
+        { text: "？", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.esempio.stmp}` },
+        { text: "🤖", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.sviluppo.stmp}` },
+        { text: "Registrati", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.conferma.stmp}` }  
     ]);
     tastiera.push([model.bottone_chiudi_puff]);
 
@@ -87,6 +89,16 @@ module.exports.query_chiudo = (id) => {
     let risposta = model.query;
     risposta.id = id;
     risposta.options.text = `Chiudo`;
+    risposta.options.show_alert = false;
+    risposta.options.cache_time = 2;
+
+    return risposta;
+}
+
+module.exports.query_puff = (id) => {
+    let risposta = model.query;
+    risposta.id = id;
+    risposta.options.text = `Puff`;
     risposta.options.show_alert = false;
     risposta.options.cache_time = 2;
 

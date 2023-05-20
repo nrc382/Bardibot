@@ -4,8 +4,8 @@
 
 
 
-const bardi = require('../bot');
-const utilità = require("../../Utils/utilità");
+const bardi = require('../../bot');
+const utilità = require("../../../Utils/utilità");
 //const timers = require("timers/promises");
 
 const log = new utilità.log();
