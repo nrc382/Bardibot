@@ -1,7 +1,9 @@
 const conversazione = require("./conversazione");
-const vista = require("../../Views/vista_utenti");
+const accessorie = require("./controller_accessorie");
 const albero_query = require("../../../Utils/albero_query");
-const accessorie = require("../Specifiche/accessorie");
+
+const vista_utenti = require("../../Views/vista_utenti");
+
 
 
 
@@ -29,7 +31,7 @@ module.exports.nuovo_utente = async (messaggio) =>{
     if (messaggio.from.language_code != "it"){
         // Si dovrebbe avvisare che per il momento non è supportata la localizzazione
     }
-    let messaggi_nuovoUtente = vista.nuovo_utente();
+    let messaggi_nuovoUtente = vista_utenti.nuovo_utente();
     await conversazione.simula_conversazione(messaggi_nuovoUtente.messaggi, messaggio.chat.id, messaggi_nuovoUtente.opzioni, messaggi_nuovoUtente.delay)
     // alla fine di questa conversazione l'utente può proseguire con la registrazione tramite la callback albero_query.utente.registra
     // gestita dalla funzione registra_utente()
@@ -50,7 +52,7 @@ async function menu_registra_utente(callback) {
 
 // Rimuove le informazioni di un utente dall'archivio locale (comando /dimenticami)        + + + PUBBLICA
 module.exports.dimentica_utente= async (messaggio) =>{
-    let messaggi_dimentica = vista.dimentica_utente();
+    let messaggi_dimentica = vista_utenti.dimentica_utente();
     await conversazione.simula_conversazione(messaggi_dimentica.messaggi, messaggio.chat.id, messaggi_dimentica.opzioni, messaggi_dimentica.delay)    
     // elimino comando e risposta… Anzi! TUTTO QUANTO!
     await conversazione.elimina_tutto(messaggio.chat.id, messaggio.message_id + 1)
@@ -69,6 +71,6 @@ async function registrazione(callback) {
 
 
 async function mostra_id(callback) {
-    let risposta_callback = vista.query_mostraID(callback.id, callback.from.id);
+    let risposta_callback = vista_utenti.query_mostraID(callback.id, callback.from.id);
     await conversazione.invia({ query: risposta_callback })
 }

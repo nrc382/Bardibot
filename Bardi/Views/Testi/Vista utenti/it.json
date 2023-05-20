@@ -1,11 +1,15 @@
 {
     "dimentica_utente": {
-        "messaggi": ["Ma?", "Io…", "Io non ti conosco!"]
+        "messaggi": [
+            "Ma?",
+            "Io…",
+            "Io non ti conosco!"
+        ]
     },
     "nuovo_utente": {
         "messaggi": [
             "…",
-            "*!*", 
+            "*!*",
             "Ciao!",
             "*Bardi di Telegram*\nÈ un bot che permette di scrivere e giocare ad avventure testuali.\n\n"
         ]

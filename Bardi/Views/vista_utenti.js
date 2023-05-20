@@ -56,10 +56,7 @@ module.exports.registrazione = () => {
 
 
 
-
-// ##########################################################################    QUERY (risposte query)
-
-
+// Query: Bottone mostra id. Mostra l'id dell'utente 
 module.exports.query_mostraID = (callback_id, id_utente) => {
     let risposta = model.query;
     risposta.id = callback_id;
@@ -67,43 +64,4 @@ module.exports.query_mostraID = (callback_id, id_utente) => {
     risposta.options.show_alert = true;
 
     return risposta;
-}
-
-module.exports.query_prossimamente = (id) => {
-    let risposta = model.query;
-    risposta.id = id;
-    risposta.options.text = `${testi.query_prossimamente.testo}`;
-    risposta.options.show_alert = true;
-
-    return risposta;
-}
-
-module.exports.query_chiudo = (id) => {
-    let risposta = model.query;
-    risposta.id = id;
-    risposta.options.text = `${testi.query_chiudo.testo}`;;
-    risposta.options.show_alert = false;
-    risposta.options.cache_time = 2;
-
-    return risposta;
-}
-
-module.exports.query_puff = (id) => {
-    let risposta = model.query;
-    risposta.id = id;
-    risposta.options.text = `${testi.query_puff.testo}`;;
-    risposta.options.show_alert = false;
-    risposta.options.cache_time = 2;
-
-    return risposta;
-}
-
-
-// ##########################################################################    ELIMINA 
-
-module.exports.elimina = (chat_id, id_messaggio) => {
-    let da_eliminare = model.elimina;
-    da_eliminare.chat_id = chat_id;
-    da_eliminare.msg_id = id_messaggio;
-    return da_eliminare;
 }

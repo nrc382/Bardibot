@@ -1,6 +1,6 @@
 // Alto livello di gestione per messaggi testuali ricevuti
 
-const utenti = require("./Specifiche/utenti");
+const utenti = require("./Specifiche/controller_utenti");
 const model = require("../Models/user_model");
 const utilità = require("../../Utils/utilità");
 

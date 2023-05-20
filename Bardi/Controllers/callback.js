@@ -1,5 +1,5 @@
-const utenti = require("./Specifiche/utenti");
-const accessorie = require("./Specifiche/accessorie");
+const utenti = require("./Specifiche/controller_utenti");
+const accessorie = require("./Specifiche/controller_accessorie");
 const albero_query = require("../../Utils/albero_query");
 
 
