@@ -16,14 +16,5 @@
     },
     "query_mostraID": {
         "testo": "🌎\nÈ un dato pubblico\n\nIl tuo id telegram è:\n"
-    },
-    "query_prossimamente": {
-        "testo": "Prossimamente…"
-    },
-    "query_chiudo": {
-        "testo": "Chiudo"
-    },
-    "query_puff": {
-        "testo": "Puff!"
     }
 }

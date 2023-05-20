@@ -1,0 +1,11 @@
+{
+    "query_prossimamente": {
+        "testo": "Prossimamente…"
+    },
+    "query_chiudo": {
+        "testo": "Chiudo"
+    },
+    "query_puff": {
+        "testo": "Puff!"
+    }
+}

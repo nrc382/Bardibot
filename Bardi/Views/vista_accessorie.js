@@ -1,6 +1,6 @@
 
 const model = require("../Models/message_model");
-const testi = require("./Testi/Vista utenti/it.json");
+const testi = require("./Testi/Vista accessorie/it.json");
 
 
 // Query: Banner "Prossimamente". Risponde al default degli switch
