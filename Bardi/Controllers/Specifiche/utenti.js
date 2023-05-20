@@ -1,6 +1,8 @@
 const conversazione = require("./conversazione");
 const vista = require("../../Views/vista_utenti");
 const albero_query = require("../../../Utils/albero_query");
+const accessorie = require("../Specifiche/accessorie");
+
 
 
 // ##########################################################################    risposta a CALLBACK
@@ -14,7 +16,7 @@ module.exports.gestisci_callback = async (callback) =>{
             return await menu_registra_utente(callback);
         }
         default: {
-            return await prossimamente(callback);
+            return await accessorie.prossimamente(callback);
         }
     }
 }
@@ -41,7 +43,7 @@ async function menu_registra_utente(callback) {
             return registrazione(callback);
         }
         default: {
-            return prossimamente(callback);
+            return accessorie.prossimamente(callback);
         }
     }
 }
@@ -56,7 +58,7 @@ module.exports.dimentica_utente= async (messaggio) =>{
 }
 
 async function registrazione(callback) {
-    
+
 }
 
 

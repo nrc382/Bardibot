@@ -1,0 +1,25 @@
+{
+    "dimentica_utente": {
+        "messaggi": ["Ma?", "Io…", "Io non ti conosco!"]
+    },
+    "nuovo_utente": {
+        "messaggi": [
+            "…",
+            "*!*", 
+            "Ciao!",
+            "*Bardi di Telegram*\nÈ un bot che permette di scrivere e giocare ad avventure testuali.\n\n"
+        ]
+    },
+    "query_mostraID": {
+        "testo": "🌎\nÈ un dato pubblico\n\nIl tuo id telegram è:\n"
+    },
+    "query_prossimamente": {
+        "testo": "Prossimamente…"
+    },
+    "query_chiudo": {
+        "testo": "Chiudo"
+    },
+    "query_puff": {
+        "testo": "Puff!"
+    }
+}

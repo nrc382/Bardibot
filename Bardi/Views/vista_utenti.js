@@ -1,5 +1,7 @@
 const albero_query = require("../../Utils/albero_query");
 const model = require("../Models/message_model");
+const simboli = require("./Testi/simboli.json");
+const testi = require("./Testi/Vista utenti/it.json");
 
 
 module.exports.dimentica_utente = () => {
@@ -7,7 +9,7 @@ module.exports.dimentica_utente = () => {
     let opzioni = model.opzioni_standard();
     let delay = 3000;
 
-    messaggi.push("Ma?", "Io…", "Io non ti conosco!");
+    messaggi = testi.dimentica_utente.messaggi.slice();
 
 
     return {
@@ -24,21 +26,12 @@ module.exports.nuovo_utente = () => {
     let delay = 2500;
 
     
-    messaggi.push( 
-        "…",
-        "*!*", 
-        "Ciao!",
-        `*Bardi di Telegram*\n`+
-        `È un bot che permette di scrivere e giocare ad avventure testuali.\n\n`
-        //+
-        //`Registrandoti verrà salvato sul server il tuo id pubblico\n`+
-        //`(in qualsiasi momento con il comando /dimenticami potrai cancellare ogni tuo dato)`
-    ); 
+    messaggi = testi.nuovo_utente.messaggi.slice(); 
     tastiera.push([
         // { text: "id?", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.mostra_id.stmp}:s` },
-        { text: "？", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.esempio.stmp}` },
-        { text: "🤖", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.sviluppo.stmp}` },
-        { text: "Registrati", callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.conferma.stmp}` }  
+        { text: simboli.info, callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.esempio.stmp}` },
+        { text: simboli.bot, callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.sviluppo.stmp}` },
+        { text: simboli.entra, callback_data: `${albero_query.utente.stmp}:${albero_query.utente.registrazione.stmp}:${albero_query.utente.registrazione.conferma.stmp}` }  
     ]);
     tastiera.push([model.bottone_chiudi_puff]);
 
@@ -70,7 +63,7 @@ module.exports.registrazione = () => {
 module.exports.query_mostraID = (callback_id, id_utente) => {
     let risposta = model.query;
     risposta.id = callback_id;
-    risposta.options.text = `🌎\nÈ un dato pubblico\n\nIl tuo id telegram è:\n${id_utente}`;
+    risposta.options.text = `${testi.query_mostraID.testo}${id_utente}`;
     risposta.options.show_alert = true;
 
     return risposta;
@@ -79,7 +72,7 @@ module.exports.query_mostraID = (callback_id, id_utente) => {
 module.exports.query_prossimamente = (id) => {
     let risposta = model.query;
     risposta.id = id;
-    risposta.options.text = `Prossimamente…`;
+    risposta.options.text = `${testi.query_prossimamente.testo}`;
     risposta.options.show_alert = true;
 
     return risposta;
@@ -88,7 +81,7 @@ module.exports.query_prossimamente = (id) => {
 module.exports.query_chiudo = (id) => {
     let risposta = model.query;
     risposta.id = id;
-    risposta.options.text = `Chiudo`;
+    risposta.options.text = `${testi.query_chiudo.testo}`;;
     risposta.options.show_alert = false;
     risposta.options.cache_time = 2;
 
@@ -98,7 +91,7 @@ module.exports.query_chiudo = (id) => {
 module.exports.query_puff = (id) => {
     let risposta = model.query;
     risposta.id = id;
-    risposta.options.text = `Puff`;
+    risposta.options.text = `${testi.query_puff.testo}`;;
     risposta.options.show_alert = false;
     risposta.options.cache_time = 2;
 
