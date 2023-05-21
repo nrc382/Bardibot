@@ -3,6 +3,9 @@ const simboli = require("../Views/Testi/simboli.json")
 const configurazione = require("../../Utils/utilità").configurazione
 
 
+// ##########################################################################    SCHELETRI
+
+
 module.exports.query = {
     id: -1,
     options: {
@@ -46,7 +49,10 @@ function opzioni_standard(tastiera) {
 }
 module.exports.opzioni_standard = opzioni_standard;
 
-module.exports.contatta_admin = {
+// ##########################################################################    BOTTONI
+
+
+module.exports.bottone_contatta_admin = {
     text: simboli.admin, url: `https://t.me/${configurazione.bot.admin_nick}`
 };
 
@@ -66,31 +72,33 @@ module.exports.bottoni_menu = {
     text: simboli.home, callback_data: `${genera_percorso_callback(albero_query.utente.menu.stmp)}`
 };
 
+// ##########################################################################    FUNZIONI
+// Non sono sicuro che modelli_messaggi sia il luogo giusto per questa parte di codice…
 
 // Queste funzioni sono state generate da chatGPT di openai 
 function genera_percorso_callback(ultimo_elemento) {
     const risultato = [];
-    cercaInAlbero(albero_query, [] , ultimo_elemento, risultato);
+    cercaInAlbero(albero_query, [], ultimo_elemento, risultato);
     return risultato.length > 1 ? risultato.join(":") : risultato[0];
-  }
-  
-  function cercaInAlbero(nodo, percorsi, stringa, risultato) {
+}
+
+function cercaInAlbero(nodo, percorsi, stringa, risultato) {
     if (nodo.hasOwnProperty("stmp")) {
-      percorsi.push(nodo.stmp);
-  
-      if (nodo.stmp === stringa) {
-        risultato.push(...percorsi);
-      }
+        percorsi.push(nodo.stmp);
+
+        if (nodo.stmp === stringa) {
+            risultato.push(...percorsi);
+        }
     }
-  
+
     for (const chiave in nodo) {
-      if (typeof nodo[chiave] === 'object') {
-        cercaInAlbero(nodo[chiave], percorsi, stringa, risultato);
-      }
+        if (typeof nodo[chiave] === 'object') {
+            cercaInAlbero(nodo[chiave], percorsi, stringa, risultato);
+        }
     }
-  
+
     if (percorsi.length > 0) {
-      percorsi.pop();
+        percorsi.pop();
     }
-  }
-  module.exports.genera_percorso_callback = genera_percorso_callback;
+}
+module.exports.genera_percorso_callback = genera_percorso_callback;

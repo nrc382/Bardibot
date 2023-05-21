@@ -1,5 +1,5 @@
 const albero_query = require("../../Utils/albero_query");
-const model = require("../Models/message_model");
+const model = require("../Models/modelli_messaggi");
 const simboli = require("./Testi/simboli.json");
 const testi = require("./Testi/Vista utenti/it.json");
 

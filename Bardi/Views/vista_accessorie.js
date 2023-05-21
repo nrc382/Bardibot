@@ -1,5 +1,5 @@
 
-const model = require("../Models/message_model");
+const model = require("../Models/modelli_messaggi");
 const testi = require("./Testi/Vista accessorie/it.json");
 
 
@@ -45,7 +45,7 @@ module.exports.elimina = (chat_id, id_messaggio) => {
 
 // Funzione: Messaggio di errore 
 module.exports.stampa_errore = (chat_id, errore) => {
-    let tastiera = [ [model.contatta_admin] ];
+    let tastiera = [ [model.bottone_contatta_admin] ];
 
     let risposta = model.invia;
     risposta.chat_id = chat_id;
