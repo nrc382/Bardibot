@@ -4,6 +4,10 @@ const simboli = require("./Testi/simboli.json");
 const testi = require("./Testi/Vista utenti/it.json");
 
 
+// ##########################################################################    MESSAGGI
+
+
+// Sequenza per l'oblio dell'utente
 module.exports.dimentica_utente = () => {
     let conversazione = model.conversazione;
     conversazione.messaggi =  testi.dimentica_utente.messaggi.slice();;
@@ -13,6 +17,7 @@ module.exports.dimentica_utente = () => {
     return conversazione
 }
 
+// Sequenza pre registrazione (è inviata in risposta a qualunque input)
 module.exports.nuovo_utente = () => {
     let tastiera = [
         [
@@ -33,7 +38,7 @@ module.exports.nuovo_utente = () => {
     return conversazione
 }
 
-
+// Sequenza di benvenuto (e bottone al menu)
 module.exports.registrazione = (callback_id) => {
     let risposta_query = model.query;
     risposta_query.id = callback_id;
@@ -52,6 +57,8 @@ module.exports.registrazione = (callback_id) => {
 
 }
 
+
+// Il menu utente
 module.exports.menu_utente = (input, info_utente) => {
     let tastiera = [
         [ model.bottone_torna_al_menu ]
@@ -71,6 +78,12 @@ module.exports.menu_utente = (input, info_utente) => {
 }
 
 
+
+
+// ##########################################################################    BOTTONI
+
+
+// Bottone menu_utente
 module.exports.query_menu = (callback_id) => {
     let risposta = model.query;
     risposta.id = callback_id;
@@ -81,7 +94,7 @@ module.exports.query_menu = (callback_id) => {
 }
 
 
-// Query: Bottone mostra id. Mostra l'id dell'utente 
+// Query: Bottone mostra_id. (mostra l'id dell'utente)
 module.exports.query_mostraID = (callback_id, id_utente) => {
     let risposta = model.query;
     risposta.id = callback_id;
@@ -89,18 +102,4 @@ module.exports.query_mostraID = (callback_id, id_utente) => {
     risposta.options.show_alert = true;
 
     return risposta;
-}
-
-// Query: Bottone mostra id. Mostra l'id dell'utente 
-module.exports.risposta_generica = (messaggio) => {
-    // let query = model.query;
-    // query.id = callback.id;
-    // query.options.text = `${testi.query_generica.testo}`;
-    // query.options.show_alert = false;
-
-    let invia = model.invia;
-    invia.chat_id = messaggio.chat.id;
-    invia.testo= `${testi.query_generica.testo}`;
-
-    return {invia: invia};
 }

@@ -55,18 +55,18 @@ module.exports.imposta_webhook = async () => {
 
 // Messaggi
 bardi_bot.on("message", async (messaggio) => {
-    await messaggi_utente.gestisci(messaggio);
+    await messaggi_utente.smista(messaggio);
 });
 
 // Callback
 bardi_bot.on("callback_query", async (callback) => {
-   await callback_utente.gestisci(callback);
+   await callback_utente.smista(callback);
 });
 
 
 // Inline
 bardi_bot.on("inline_query", async (inline) => {
-    await inline_utente.gestisci(inline);
+    await inline_utente.smista(inline);
 });
 
 

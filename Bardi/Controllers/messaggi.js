@@ -5,7 +5,7 @@ const accessorie = require("./Specifiche/controller_accessorie");
 
 
 
-module.exports.gestisci = async (messaggio) => {
+module.exports.smista = async (messaggio) => {
     if (messaggio.text === utilità.configurazione.comandi.dimentica) {
         await utenti.dimentica_utente(messaggio);
     } else {

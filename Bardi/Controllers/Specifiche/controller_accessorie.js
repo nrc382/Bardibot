@@ -25,13 +25,14 @@ module.exports.elimina_messaggioecomando= async(callback) =>{
     await conversazione.elimina_comandoerisposta(callback.message.chat.id, callback.message.message_id - 1);
 }
 
+// Gestisce eventuali errori 
 module.exports.stampa_errore = async (messaggio, errore) => {
     let stampa_errore = vista_accessorie.stampa_errore(messaggio.chat.id, errore);
     await conversazione.invia({invia: stampa_errore});
 }
 
 
-
+// Funzione: ritorna vero se input ha la proprietà id (e non message_id). Dovrebbe distinguere tra callback e messaggio 
 module.exports.è_callback = (input) => {
-    return !input.hasOwnProperty("message_id") ;
+    return (!input.hasOwnProperty("message_id") && input.hasOwnProperty("id")) ;
 }

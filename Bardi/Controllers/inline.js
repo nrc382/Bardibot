@@ -1,6 +1,6 @@
 
 
 
-module.exports.gestisci = async (callback) => {
+module.exports.smista = async (callback) => {
     
 }

@@ -10,13 +10,15 @@ const vista_utenti = require("../../Views/vista_utenti");
 
 // ##########################################################################    DISPATCH delle CALLBACK che iniziano per UTENTE
 
-module.exports.gestisci_callback = async (callback) =>{
+
+// Smista ai vari gestori e gestisce il default
+module.exports.smista_callback = async (callback) =>{
     switch (callback.data.split(":")[1]) {
         case (albero_query.utente.mostra_id.stmp): { // mostra_id
             return await mostra_id(callback);
         }
         case (albero_query.utente.registrazione.stmp): { // registrazione
-            return await menu_registra_utente(callback);
+            return await smista_registrazione_utente(callback);
         }
         case (albero_query.utente.menu.stmp): { // Menu
             return await menu_utente_callback(callback);
@@ -32,10 +34,13 @@ module.exports.gestisci_callback = async (callback) =>{
 
 // ##########################################################################    REGISTRAZIONE
 
+// Espone la funzione è_registrato del model (verifica se un utente è registrato)
 async function è_registrato(id_utente){
     return await model_utenti.è_registrato(id_utente);
 }
 module.exports.è_registrato = è_registrato;
+
+
 
 // Messaggio inviato agli utenti non registrati (Ciao, nuovo abbonato!)
 module.exports.nuovo_utente = async (messaggio) =>{
@@ -48,8 +53,10 @@ module.exports.nuovo_utente = async (messaggio) =>{
     // gestita dalla funzione registra_utente()
 }
 
-// Gestione callback che iniziano per UTENTE:REGISTRAZIONE
-async function menu_registra_utente(callback) {
+
+
+// Smista le callback che iniziano per UTENTE:REGISTRAZIONE
+async function smista_registrazione_utente(callback) {
     switch (callback.data.split(":")[2]) {
         // Da aggiungere .esempio e .sviluppo
         case (albero_query.utente.registrazione.conferma.stmp): { 
@@ -80,12 +87,15 @@ module.exports.dimentica_utente= async (messaggio) =>{
 
 // ##########################################################################    MENU
 
+
+// Risponde alla query e passa la gestione a menu_utente(input)
 async function menu_utente_callback (callback) {
     let risposta_callback = vista_utenti.query_menu(callback);
     await conversazione.invia(risposta_callback);
     await menu_utente(callback);
 }
 
+// Stampa il menu utente dopo aver caricato info_utente
 async function menu_utente(input) {
     let risposta;
     let messaggio = accessorie.è_callback(input) ? input.message : input;
