@@ -14,7 +14,24 @@
             "*Bardi di Telegram*\nÈ un bot che permette di scrivere e giocare ad avventure testuali.\n\n"
         ]
     },
+    "registrazione_utente": {
+        "messaggi": [
+            "… 🙃",
+            "… 🙂",
+            "… 😊",
+            "*Bardi di Telegram*\n\nBenvenuta/o!\n"
+        ]
+    },
     "query_mostraID": {
         "testo": "🌎\nÈ un dato pubblico\n\nIl tuo id telegram è:\n"
+    },
+    "query_registrazione": {
+        "testo": "🖖\nSalve!"
+    },
+    "query_menu": {
+        "testo": "Bardi di Telegram"
+    },
+    "query_generica": {
+        "testo": "🌎"
     }
 }

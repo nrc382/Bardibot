@@ -42,3 +42,16 @@ module.exports.elimina = (chat_id, id_messaggio) => {
     da_eliminare.msg_id = id_messaggio;
     return da_eliminare;
 }
+
+// Funzione: Messaggio di errore 
+module.exports.stampa_errore = (chat_id, errore) => {
+    let tastiera = [ [model.contatta_admin] ];
+
+    let risposta = model.invia;
+    risposta.chat_id = chat_id;
+    risposta.testo = `${testi.stampa_errore}${errore}`;
+    risposta.options = model.opzioni_standard(tastiera);
+
+    return risposta
+
+}

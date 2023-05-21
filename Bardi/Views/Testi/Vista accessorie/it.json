@@ -7,5 +7,7 @@
     },
     "query_puff": {
         "testo": "Puff!"
-    }
+    },
+    "stampa_errore": "*Woops!*\n\nC'è stato un errore nel codice.\n"
+
 }

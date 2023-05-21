@@ -94,7 +94,6 @@ module.exports.statistiche = {
     }
 }
 
-
 // restituisce sempre e comunque un array. Se un testo è piu lungo di lunghezza_limite, lo divide negli elementi dell'array
 module.exports.dividiTesto = (testo, lunghezza_limite) => {
         let str_array = testo.split("\n");
@@ -139,6 +138,32 @@ module.exports.mescolaArray = (array) => {
     }
   
     return array;
+}
+
+
+// ##########################################################################               - - - SCHELETRI
+
+module.exports.scheletro_racconto = {
+    id_recconto: -1,
+    titolo: "",
+    autore: "",
+    data_creazione: Date.now(),
+    versione: 0
+}
+
+module.exports.scheletro_racconto_giocato = {
+    id_recconto: -1,
+    data_inizio: Date.now(),
+    completamento: 0
+}
+
+module.exports.scheletro_info_utente = {
+    id_telegram: -1,
+    data_registrazione: Date.now(),
+    pseudonimo: "",
+    biblioteca: [], // Array di racconti
+    collezione: [], // collezione di oggetti
+    racconti_giocati: [] // Array di racconti giocati
 }
 
 

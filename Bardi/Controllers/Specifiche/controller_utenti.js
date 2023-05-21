@@ -2,20 +2,24 @@ const conversazione = require("./conversazione");
 const accessorie = require("./controller_accessorie");
 const albero_query = require("../../../Utils/albero_query");
 
+const model_utenti = require("../../Models/modello_utenti")
 const vista_utenti = require("../../Views/vista_utenti");
 
 
 
 
-// ##########################################################################    risposta a CALLBACK
+// ##########################################################################    DISPATCH delle CALLBACK che iniziano per UTENTE
 
 module.exports.gestisci_callback = async (callback) =>{
     switch (callback.data.split(":")[1]) {
-        case (albero_query.utente.mostra_id.stmp): { // MOSTRA_ID
+        case (albero_query.utente.mostra_id.stmp): { // mostra_id
             return await mostra_id(callback);
         }
-        case (albero_query.utente.registrazione.stmp): { // REGISTRA
+        case (albero_query.utente.registrazione.stmp): { // registrazione
             return await menu_registra_utente(callback);
+        }
+        case (albero_query.utente.menu.stmp): { // Menu
+            return await menu_utente_callback(callback);
         }
         default: {
             return await accessorie.prossimamente(callback);
@@ -24,9 +28,16 @@ module.exports.gestisci_callback = async (callback) =>{
 }
 
 
+
+
 // ##########################################################################    REGISTRAZIONE
 
-// Messaggio inviato agli utenti non registrati
+async function è_registrato(id_utente){
+    return await model_utenti.è_registrato(id_utente);
+}
+module.exports.è_registrato = è_registrato;
+
+// Messaggio inviato agli utenti non registrati (Ciao, nuovo abbonato!)
 module.exports.nuovo_utente = async (messaggio) =>{
     if (messaggio.from.language_code != "it"){
         // Si dovrebbe avvisare che per il momento non è supportata la localizzazione
@@ -50,8 +61,13 @@ async function menu_registra_utente(callback) {
     }
 }
 
-// Rimuove le informazioni di un utente dall'archivio locale (comando /dimenticami)        + + + PUBBLICA
+
+
+// ##########################################################################    ELIMINA REGISTRAZIONE
+
+// Rimuove le informazioni di un utente dall'archivio locale (comando /dimenticami)        
 module.exports.dimentica_utente= async (messaggio) =>{
+    await model_utenti.elimina_directory_utente(messaggio.chat.id);
     let messaggi_dimentica = vista_utenti.dimentica_utente();
     await conversazione.simula_conversazione(messaggi_dimentica.messaggi, messaggio.chat.id, messaggi_dimentica.opzioni, messaggi_dimentica.delay)    
     // elimino comando e risposta… Anzi! TUTTO QUANTO!
@@ -59,15 +75,57 @@ module.exports.dimentica_utente= async (messaggio) =>{
 
 }
 
-async function registrazione(callback) {
+
+
+
+// ##########################################################################    MENU
+
+async function menu_utente_callback (callback) {
+    let risposta_callback = vista_utenti.query_menu(callback);
+    await conversazione.invia(risposta_callback);
+    await menu_utente(callback);
+}
+
+async function menu_utente(input) {
+    let risposta;
+    let messaggio = accessorie.è_callback(input) ? input.message : input;
+    const info_utente = await model_utenti.info_utente(messaggio.from.id);
+    if (info_utente.esito == false){
+        risposta = accessorie.stampa_errore(messaggio, info_utente.msg);
+    } else {
+        risposta = vista_utenti.menu_utente(input, info_utente.dati);
+    }
+    
 
 }
+module.exports.menu_utente = menu_utente;
+
 
 
 
 
 
 // ##########################################################################               - - - PRIVATE
+
+
+
+async function registrazione(callback) {
+    // creo la directory
+    const registra_utente = await model_utenti.registra_utente(callback.from.id);
+    if (registra_utente.esito == false ){
+        return await accessorie.stampa_errore(callback.message, registra_utente.msg)
+    }
+    let messaggi_registrazione = vista_utenti.registrazione(callback.id);
+    await conversazione.invia({ query: messaggi_registrazione.query } ); // risposta alla query
+    await conversazione.simula_conversazione(messaggi_registrazione.conversazione.messaggi, callback.message.chat.id, messaggi_registrazione.conversazione.opzioni, messaggi_registrazione.conversazione.delay)    
+    await conversazione.elimina_comandoerisposta(callback.message.chat.id, callback.message.message_id-1);
+
+    // creo file info_utente
+
+
+    
+}
+
 
 
 async function mostra_id(callback) {

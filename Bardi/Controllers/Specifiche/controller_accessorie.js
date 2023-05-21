@@ -1,7 +1,6 @@
 const conversazione = require("./conversazione");
 const vista_accessorie = require("../../Views/vista_accessorie");
 
-const albero_query = require("../../../Utils/albero_query");
 
 
  
@@ -24,4 +23,15 @@ module.exports.elimina_messaggioecomando= async(callback) =>{
     let risposta_callback = vista_accessorie.query_puff(callback.id);
     await conversazione.invia({ query: risposta_callback });
     await conversazione.elimina_comandoerisposta(callback.message.chat.id, callback.message.message_id - 1);
+}
+
+module.exports.stampa_errore = async (messaggio, errore) => {
+    let stampa_errore = vista_accessorie.stampa_errore(messaggio.chat.id, errore);
+    await conversazione.invia({invia: stampa_errore});
+}
+
+
+
+module.exports.è_callback = (input) => {
+    return !input.hasOwnProperty("message_id") ;
 }
