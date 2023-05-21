@@ -1,7 +1,8 @@
-const albero_query = require("../../Utils/albero_query");
 const model = require("../Models/modelli_messaggi");
 const simboli = require("./Testi/simboli.json");
 const testi = require("./Testi/Vista utenti/it.json");
+const albero_query = require("../../Utils/albero_query");
+
 
 
 // ##########################################################################    MESSAGGI
@@ -21,10 +22,9 @@ module.exports.dimentica_utente = () => {
 module.exports.nuovo_utente = () => {
     let tastiera = [
         [
-            { text: "id?", callback_data: `${model.genera_percorso_callback(albero_query.utente.mostra_id.stmp)}` },
-            { text: simboli.info, callback_data: `${model.genera_percorso_callback(albero_query.utente.registrazione.esempio.stmp)}` },
-            { text: simboli.bot, callback_data: `${model.genera_percorso_callback(albero_query.utente.registrazione.sviluppo.stmp)}` },
-            { text: simboli.entra, callback_data: `${model.genera_percorso_callback(albero_query.utente.registrazione.conferma.stmp)}` }
+            { text: simboli.info, callback_data: `${model.genera_percorso_callback(albero_query.guide.generali.stmp)}` },
+            { text: simboli.bot, callback_data: `${model.genera_percorso_callback(albero_query.info.sviluppo.stmp)}` },
+            { text: simboli.entra, callback_data: `${model.genera_percorso_callback(albero_query.utente.registra.stmp)}` }
         ],
         [ model.bottone_chiudi_puff ]
     ];
@@ -58,24 +58,7 @@ module.exports.registrazione = (callback_id) => {
 }
 
 
-// Il menu utente
-module.exports.menu_utente = (input, info_utente) => {
-    let tastiera = [
-        [ model.bottone_torna_al_menu ]
-    ];
-    
-    let risposta = {};
-    if (input.hasOwnProperty("id")){ // è una callback: devo modificare il messaggio
-        risposta.modifica = model.modifica;
 
-    } else { // Il menù è stato aperto da un comando... devo inviare il messaggio (ed eliminare il comando)
-        risposta.elimina = -1;
-        risposta.invia = "";
-    }
-
-    return risposta
-
-}
 
 
 
@@ -90,7 +73,7 @@ module.exports.query_menu = (callback_id) => {
     risposta.options.text = `${testi.query_menu.testo}`;
     risposta.options.show_alert = false;
 
-    return risposta;
+    return {query: risposta};
 }
 
 
@@ -101,5 +84,5 @@ module.exports.query_mostraID = (callback_id, id_utente) => {
     risposta.options.text = `${testi.query_mostraID.testo}${id_utente}`;
     risposta.options.show_alert = true;
 
-    return risposta;
+    return {query: risposta};
 }

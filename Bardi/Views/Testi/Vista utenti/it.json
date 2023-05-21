@@ -22,6 +22,9 @@
             "*Bardi di Telegram*\n\nBenvenuta/o!\n"
         ]
     },
+    "menu_utente": {
+        "titolo": "*Bardi di Telegram*\n\n"
+    },
     "query_mostraID": {
         "testo": "🌎\nÈ un dato pubblico\n\nIl tuo id telegram è:\n"
     },

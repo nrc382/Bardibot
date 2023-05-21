@@ -6,30 +6,32 @@
 module.exports = {
     utente: {
         stmp: "UTENTE",
-        menu: {
-            stmp: "MENU",
-            
-        },
+
         mostra_id: {
             stmp: "MOSTRA_ID",
         },
-        registrazione: {
-            stmp: "REG",
-            sviluppo: {
-                stmp: "DEV",
-            
-            },
-            esempio: {
-                stmp: "INFO",
-            
-            },
-            conferma: {
-                stmp: "CONF_REG",
-            
-            }
+        registra: {
+            stmp: "REGISTRA_UTENTE",
         }
     },
-    
+    menu_generale: {
+        stmp: "MENU_GENERALE",
+    },
+    guide: {
+        stmp: "GUIDE",
+        generali: {
+            stmp: "INFO_GENERALI",
+            
+        }
+        
+    },
+    info: {
+        stmp: "INFO",
+
+        sviluppo: {
+            stmp: "SVILUPPO"
+        }
+    },
     chiudi: {
         stmp: "CHIUDI",
         puff: {

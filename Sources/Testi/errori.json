@@ -1,7 +1,7 @@
 {
     "è_registrato": "ERRORE ACCESSO AL FILESYSTEM",
     "registra_utente": "ERRORE di SCRITTURA (registrando l'utente)",
-    "rimuovi_directory_utente": "ERRORE di SCRITTURA (rimuovendo la directory utente)",
+    "rimuovi_directory": "ERRORE di SCRITTURA (rimuovendo la directory) ",
     "scrivi_json": "Si è verificato un errore durante la scrittura del file: ",
     "leggi_json": "Si è verificato un errore durante la lettura del file: "
 

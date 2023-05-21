@@ -13,7 +13,7 @@ module.exports.smista = async (messaggio) => {
         if (è_registrato == false){
             await utenti.nuovo_utente(messaggio);
         } else if (è_registrato == true) {
-            await utenti.menu_utente(messaggio)
+            await utenti.menu_generale(messaggio)
         } else {
             await accessorie.stampa_errore(messaggio, è_registrato);
         }

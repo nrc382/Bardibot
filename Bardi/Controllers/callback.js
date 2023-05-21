@@ -8,6 +8,9 @@ module.exports.smista = async (callback) => {
         case (albero_query.utente.stmp): {
             return await utenti.smista_callback(callback);
         }
+        case (albero_query.menu_generale.stmp): {
+            return await accessorie.menu_generale(callback);
+        }
         case (albero_query.chiudi.stmp): {
             return await accessorie.chiudi_messaggio(callback);
         }

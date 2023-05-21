@@ -35,7 +35,7 @@ module.exports.elimina = {
 module.exports.modifica = {
     testo: "",
     options: opzioni_standard(),
-    // + inline_message_id o altrimenti la coppia chat_id e msg_id 
+    chat_id: -1, msg_id: -1 // o altrimenti inline_message_id la coppia 
 }
 
 
@@ -65,11 +65,11 @@ module.exports.bottone_chiudi_puff = {
 };
 
 module.exports.bottone_torna_al_menu = {
-    text: simboli.home, callback_data: `${genera_percorso_callback(albero_query.utente.menu.stmp)}`
+    text: simboli.home, callback_data: `${genera_percorso_callback(albero_query.menu_generale.stmp)}`
 };
 
 module.exports.bottoni_menu = {
-    text: simboli.home, callback_data: `${genera_percorso_callback(albero_query.utente.menu.stmp)}`
+    text: simboli.home, callback_data: `${genera_percorso_callback(albero_query.menu_generale.stmp)}`
 };
 
 // ##########################################################################    FUNZIONI

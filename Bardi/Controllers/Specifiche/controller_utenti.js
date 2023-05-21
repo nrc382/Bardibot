@@ -17,8 +17,8 @@ module.exports.smista_callback = async (callback) =>{
         case (albero_query.utente.mostra_id.stmp): { // mostra_id
             return await mostra_id(callback);
         }
-        case (albero_query.utente.registrazione.stmp): { // registrazione
-            return await smista_registrazione_utente(callback);
+        case (albero_query.utente.registra.stmp): { // registrazione
+            return await registrazione(callback);
         }
         case (albero_query.utente.menu.stmp): { // Menu
             return await menu_utente_callback(callback);
@@ -56,17 +56,17 @@ module.exports.nuovo_utente = async (messaggio) =>{
 
 
 // Smista le callback che iniziano per UTENTE:REGISTRAZIONE
-async function smista_registrazione_utente(callback) {
-    switch (callback.data.split(":")[2]) {
-        // Da aggiungere .esempio e .sviluppo
-        case (albero_query.utente.registrazione.conferma.stmp): { 
-            return registrazione(callback);
-        }
-        default: {
-            return accessorie.prossimamente(callback);
-        }
-    }
-}
+// async function smista_registrazione_utente(callback) {
+//     switch (callback.data.split(":")[2]) {
+//         // Da aggiungere .esempio e .sviluppo
+//         case (albero_query.utente.registrazione.conferma.stmp): { 
+            
+//         }
+//         default: {
+//             return accessorie.prossimamente(callback);
+//         }
+//     }
+// }
 
 
 
@@ -92,21 +92,22 @@ module.exports.dimentica_utente= async (messaggio) =>{
 async function menu_utente_callback (callback) {
     let risposta_callback = vista_utenti.query_menu(callback);
     await conversazione.invia(risposta_callback);
-    await menu_utente(callback);
+    return await menu_utente(callback);
 }
 
 // Stampa il menu utente dopo aver caricato info_utente
 async function menu_utente(input) {
     let risposta;
     let messaggio = accessorie.è_callback(input) ? input.message : input;
-    const info_utente = await model_utenti.info_utente(messaggio.from.id);
+    const info_utente = await model_utenti.info_utente(messaggio.chat.id);
+
     if (info_utente.esito == false){
         risposta = accessorie.stampa_errore(messaggio, info_utente.msg);
     } else {
         risposta = vista_utenti.menu_utente(input, info_utente.dati);
     }
-    
 
+    return await conversazione.invia(risposta);
 }
 module.exports.menu_utente = menu_utente;
 
@@ -140,5 +141,5 @@ async function registrazione(callback) {
 
 async function mostra_id(callback) {
     let risposta_callback = vista_utenti.query_mostraID(callback.id, callback.from.id);
-    await conversazione.invia({ query: risposta_callback })
+    await conversazione.invia(risposta_callback)
 }
