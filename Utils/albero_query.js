@@ -6,7 +6,21 @@
 module.exports = {
     utente: {
         stmp: "UTENTE",
-
+        menu_utente: {
+            stmp: "MENU_UTENTE",
+            imposta_pseudonimo: {
+                stmp: "IMPOSTA_PSEUDONIMO",
+            },
+            biblioteca_utente: {
+                stmp: "BIBLIOTECA",
+            },
+            collezione_oggetti: {
+                stmp: "OGGETTI_UTENTE",
+            },
+            racconti_giocati: {
+                stmp: "RACCONTI_GIOCATI",
+            },
+        },
         mostra_id: {
             stmp: "MOSTRA_ID",
         },
@@ -24,6 +38,13 @@ module.exports = {
             
         }
         
+    },
+    racconti: {
+        stmp: "RACCONTI",
+
+        lista: {
+            stmp: "LISTA",
+        },
     },
     info: {
         stmp: "INFO",

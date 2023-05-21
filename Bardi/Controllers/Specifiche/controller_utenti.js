@@ -20,8 +20,8 @@ module.exports.smista_callback = async (callback) =>{
         case (albero_query.utente.registra.stmp): { // registrazione
             return await registrazione(callback);
         }
-        case (albero_query.utente.menu.stmp): { // Menu
-            return await menu_utente_callback(callback);
+        case (albero_query.utente.menu_utente.stmp): { // Menu
+            return await smista_menu_utente(callback);
         }
         default: {
             return await accessorie.prossimamente(callback);
@@ -55,20 +55,6 @@ module.exports.nuovo_utente = async (messaggio) =>{
 
 
 
-// Smista le callback che iniziano per UTENTE:REGISTRAZIONE
-// async function smista_registrazione_utente(callback) {
-//     switch (callback.data.split(":")[2]) {
-//         // Da aggiungere .esempio e .sviluppo
-//         case (albero_query.utente.registrazione.conferma.stmp): { 
-            
-//         }
-//         default: {
-//             return accessorie.prossimamente(callback);
-//         }
-//     }
-// }
-
-
 
 // ##########################################################################    ELIMINA REGISTRAZIONE
 
@@ -88,28 +74,38 @@ module.exports.dimentica_utente= async (messaggio) =>{
 // ##########################################################################    MENU
 
 
-// Risponde alla query e passa la gestione a menu_utente(input)
-async function menu_utente_callback (callback) {
-    let risposta_callback = vista_utenti.query_menu(callback);
-    await conversazione.invia(risposta_callback);
-    return await menu_utente(callback);
+// Smista le callback che iniziano per UTENTE:REGISTRAZIONE
+async function smista_menu_utente(callback) {
+    switch (callback.data.split(":")[2]) {
+        // Da aggiungere .esempio e .sviluppo
+        case (albero_query.utente.menu_utente.biblioteca_utente.stmp): { 
+            return accessorie.prossimamente(callback);
+        }
+        case (albero_query.utente.menu_utente.collezione_oggetti.stmp): { 
+            return accessorie.prossimamente(callback);
+        }
+        case (albero_query.utente.menu_utente.imposta_pseudonimo.stmp): { 
+            return accessorie.prossimamente(callback);
+        }
+        case (albero_query.utente.menu_utente.racconti_giocati.stmp): { 
+            return accessorie.prossimamente(callback);
+        }
+        default: {
+            return menu_utente(callback);
+        }
+    }
 }
 
-// Stampa il menu utente dopo aver caricato info_utente
-async function menu_utente(input) {
-    let risposta;
-    let messaggio = accessorie.è_callback(input) ? input.message : input;
-    const info_utente = await model_utenti.info_utente(messaggio.chat.id);
 
-    if (info_utente.esito == false){
-        risposta = accessorie.stampa_errore(messaggio, info_utente.msg);
-    } else {
-        risposta = vista_utenti.menu_utente(input, info_utente.dati);
-    }
+// Stampa il menu utente dopo aver caricato info_utente
+async function menu_utente (callback) {
+    const info_utente = await model_utenti.info_utente(callback.message.chat.id);
+    let risposta = vista_utenti.menu_utente(callback, info_utente);
 
     return await conversazione.invia(risposta);
 }
-module.exports.menu_utente = menu_utente;
+
+
 
 
 

@@ -12,7 +12,7 @@ const modello_accessorie = require("./modello_accessorie");
 
 
 // Controlla se esiste la directory utente
-module.exports.è_registrato = (id_utente) => {
+module.exports.è_registrato = async (id_utente) => {
   try {
     let user_dir = directory_utente(id_utente);
     return (fs.existsSync(user_dir));
@@ -50,7 +50,7 @@ module.exports.elimina_directory_utente = async (id_utente) => {
 module.exports.info_utente = async (id_utente) => {
   let user_dir = directory_utente(id_utente);
   user_dir = path.join(user_dir, utilità.configurazione.directory.user_info);
-  return await modello_accessorie.leggi_JSON(user_dir);
+  return (await modello_accessorie.leggi_JSON(user_dir)).dati ;
 }
 
 

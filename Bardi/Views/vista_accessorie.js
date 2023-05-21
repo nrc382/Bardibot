@@ -10,13 +10,15 @@ const albero_query = require("../../Utils/albero_query");
 module.exports.menu_generale = (input, statistiche) => {
     let tastiera = [
         [
+            { text: simboli.utente, callback_data: `${model.genera_percorso_callback(albero_query.utente.menu_utente.stmp)}` },
+            { text: simboli.racconti_pubblici, callback_data: `${model.genera_percorso_callback(albero_query.racconti.lista.stmp)}` },
             { text: simboli.info, callback_data: `${model.genera_percorso_callback(albero_query.guide.generali.stmp)}` },
             { text: simboli.bot, callback_data: `${model.genera_percorso_callback(albero_query.info.sviluppo.stmp)}` },
-            { text: simboli.utente, callback_data: `${model.genera_percorso_callback(albero_query.utente.menu.stmp)}` }
+           
         ],
         [ model.bottone_chiudi ]
     ];
-    let testo = testi.menu_utente.titolo;
+    let testo = testi.menu_generale.titolo;
     
 
     let risposta = {};

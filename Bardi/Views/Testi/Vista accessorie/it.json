@@ -1,4 +1,7 @@
 {
+    "menu_generale": {
+        "titolo": "*Bardi di Telegram*\n\n"
+    },
     "query_prossimamente": {
         "testo": "Prossimamente…"
     },

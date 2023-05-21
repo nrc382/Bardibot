@@ -23,7 +23,31 @@
         ]
     },
     "menu_utente": {
-        "titolo": "*Bardi di Telegram*\n\n"
+        "titolo": "*Bardi di Telegram*\n\n",
+        "pseudonimo": {
+            "parametro": "{{pseudonimo}}",
+            "non_inpostato": "non impostato",
+            "linea": "• Pseudonimo: {{pseudonimo}}\n"
+
+        },
+        "biblioteca": {
+            "parametro": "{{racconti}}",
+            "nessuno": "• Devi ancora scrivere il tuo primo racconto…\n",
+            "solo_uno": "• Per il momento hai scritto un racconto\n",
+            "piu_duno": "• Hai scritto {{racconti}} recconti\n"
+        },
+        "collezione": {
+            "parametro": "{{collezione}}",
+            "nessuno": "• Inizia a collezionare troferi nei racconti pubblici\n",
+            "solo_uno": "• Per il momento hai collezionato un trofeo\n",
+            "piu_duno": "• Hai collezionato {{collezione}} trofei!\n"
+        },
+        "giocati": {
+            "parametro": "{{giocati}}",
+            "nessuno": "• Prova uno dei racconti pubblici!\n",
+            "solo_uno": "• Per il momento hai giocato ad un racconto\n",
+            "piu_duno": "• Hai giocato a {{giocati}} racconti!\n"
+        }
     },
     "query_mostraID": {
         "testo": "🌎\nÈ un dato pubblico\n\nIl tuo id telegram è:\n"
@@ -32,7 +56,7 @@
         "testo": "🖖\nSalve!"
     },
     "query_menu": {
-        "testo": "Bardi di Telegram"
+        "testo": "Menu Personale"
     },
     "query_generica": {
         "testo": "🌎"

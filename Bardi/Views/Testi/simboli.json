@@ -1,9 +1,15 @@
 {
+    "utente": "👤",
+    "racconti_pubblici": "🌍",
+    "home": "⌂",
     "info": "？",
     "bot": "🤖",
-    "utente": "👤",
+    "admin": "👨‍💻",
     "entra": "⎆",
     "chiudi": "⨷",
-    "admin": "👨‍💻",
-    "home": "⌂"
+    "indietro": "↵",
+    "pseudonimo": "🎭",
+    "biblioteca": "📚",
+    "collezione": "🏆",
+    "racconti_giocati": "🎯"
 }
